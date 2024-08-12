@@ -284,7 +284,7 @@ def main():
             tf_idf_scores[word] = [compute_tf_idf(word, doc, docs) for doc in docs]
 
         tf_idf_df = pd.DataFrame({
-            word: [f"{tf:.4f}/{idf:.4f}" for tf, idf, _ in tf_idf_scores[word]]
+            word: [f"{tf:.4f}*{idf:.4f}" for tf, idf, _ in tf_idf_scores[word]]
             for word in query_words
         })
         tf_idf_df.index = [f"doc{i+1}" for i in range(len(docs))]
